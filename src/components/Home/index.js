@@ -1,13 +1,26 @@
-import React from 'react';
+import React, {Component} from 'react';
 import  { FirebaseContext } from '../Firebase';
-const Home = () => (
-  <FirebaseContext.Consumer>
+
+class Home extends Component {
+
+
+render(){
+
+  return (
+  
+<FirebaseContext.Consumer>
     {firebase => {
 
-      var x = firebase.getInventory();
+      var inventory = firebase.getInventory()
+      console.log(inventory);
+        }}
 
-      return console.log(x);
-    }}
-  </FirebaseContext.Consumer>
-);
+ </FirebaseContext.Consumer>
+
+  );
+}
+
+  }
+    
+
 export default Home;
