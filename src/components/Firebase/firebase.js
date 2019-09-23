@@ -28,8 +28,7 @@ class Firebase {
     /* Social Sign In Method Provider */
 
     this.googleProvider = new app.auth.GoogleAuthProvider();
-    this.facebookProvider = new app.auth.FacebookAuthProvider();
-    this.twitterProvider = new app.auth.TwitterAuthProvider();
+
   }
 
   // *** Auth API ***
@@ -43,11 +42,6 @@ class Firebase {
   doSignInWithGoogle = () =>
     this.auth.signInWithPopup(this.googleProvider);
 
-  doSignInWithFacebook = () =>
-    this.auth.signInWithPopup(this.facebookProvider);
-
-  doSignInWithTwitter = () =>
-    this.auth.signInWithPopup(this.twitterProvider);
 
   doSignOut = () => this.auth.signOut();
 
@@ -82,6 +76,8 @@ class Firebase {
               email: authUser.email,
               emailVerified: authUser.emailVerified,
               providerData: authUser.providerData,
+              schoolName: authUser.schoolName,
+              numberOfStudents: authUser.numberOfStudents,
               ...dbUser,
             };
 
@@ -92,23 +88,7 @@ class Firebase {
       }
     });
 
-getInventory(){
-  var query = this.db.ref("masterSheet").orderByKey();
-
-  query.once("value").then(function(snapshot) {
-  
-    snapshot.forEach(function(childSnapshot) {
-      // key will be "ada" the first time and "alan" the second time
-      var key = childSnapshot.key;
-      // childData will be the actual contents of the child
-      var childData = childSnapshot.val();
-
-
-  });
-
-});
-
-}
+inventory = () => this.db.ref('masterSheet').orderByKey();
 
   // *** User API ***
 
