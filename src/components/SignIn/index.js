@@ -49,6 +49,7 @@ class SignInFormBase extends Component{
         const isInvalid = password === ' ' || email === '';
 
         return(
+        <div>
             <form onSubmit={this.onSubmit}>
             <input name="email" value={email} onChange={this.onChange} type="text" placeholder="Email Address" />
             <input name="password" value ={password} onChange={this.onChange} type ="password" placeholder="Password" />
@@ -56,6 +57,17 @@ class SignInFormBase extends Component{
             {error && <p>{error.message}</p>}
 
             </form>
+            <style jsx>
+                {`
+
+                form{
+                    background-color: red;
+                }
+                
+                `}
+
+            </style>
+            </div>
         )
 
     }
