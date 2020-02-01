@@ -3,6 +3,10 @@ import { withFirebase } from "../Firebase";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
+
+import { withAuthorization, withEmailVerification } from '../Session';
 
 
 class Home extends Component {
@@ -75,20 +79,8 @@ const columns = [
   }
 ];
 
-const InventoryList = ({ inventory }) => (
-  <ul>
-    {inventory.map(user => (
-      <li key={user[5]}>
-        <span>
-          <strong>Product:</strong> {user[0]}
-        </span>
-        <span>
-          <strong>Image: </strong>
-          <img width="100" src={user[8]} alt="product" />
-        </span>
-      </li>
-    ))}
-  </ul>
-);
 
-export default withFirebase(Home);
+export default compose(
+  withFirebase,
+  withEmailVerification
+)(Home);
