@@ -37,6 +37,11 @@ const NavigationAuth = ({ authUser }) => (
     </div>
     <style jsx>
       {`
+      a{
+        color:black;
+        font-family:'Quicksand', sans-serif;
+        text-decoration:none;
+      }
       .logo-link{
         color:black !important;
         text-decoration:none !important;
