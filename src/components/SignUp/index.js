@@ -42,7 +42,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne, isAdmin, schoolName, numberOfStudents } = this.state;
+    const { username, email, passwordOne, isAdmin, schoolName } = this.state;
     const roles = {};
 
     if (isAdmin) {
@@ -57,8 +57,7 @@ class SignUpFormBase extends Component {
           username,
           email,
           roles,
-          schoolName,
-          numberOfStudents
+          schoolName
         });
       })
       .then(() => {
@@ -96,7 +95,6 @@ class SignUpFormBase extends Component {
       isAdmin,
       error,
       schoolName,
-      numberOfStudents
     } = this.state;
 
     const isInvalid =
@@ -135,14 +133,22 @@ class SignUpFormBase extends Component {
           type="password"
           placeholder="Confirm Password"
         />     
-        <select name="schoolName" value={this.state.schoolName} onChange={this.onChange} type="text"
-        placeholder="Enter Your School">
+        <select name="schoolName" value={schoolName} onChange={this.onChange} type="text"
+        placeholder="Select Your School">
           <option value="Iman Academy South East">Iman Academy South East</option>
           <option value="Iman Academy South West">Iman Academy South West</option>
           <option value="Houston Quran Academy">Houston Quran Academy</option>
           <option value="Ilm Academy">Ilm Academy</option>
         </select>
-
+        <label>
+          Admin:
+          <input
+            name="isAdmin"
+            type="checkbox"
+            checked={isAdmin}
+            onChange={this.onChangeCheckbox}
+          />
+        </label>
         <button disabled={isInvalid} type="submit">
           Sign Up
         </button>

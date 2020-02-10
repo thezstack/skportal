@@ -27,9 +27,11 @@ const NavigationAuth = ({ authUser }) => (
         <li>
           <Link to={ROUTES.ACCOUNT}>Account</Link>
         </li>
-        <li>
-          <Link to={ROUTES.ADMIN}>Admin</Link>
-        </li>
+        {!!authUser.roles[ROLES.ADMIN] && (
+          <li>
+            <Link to={ROUTES.ADMIN}>Admin</Link>
+          </li>
+        )}
         <li>
           <SignOutButton />
         </li>
@@ -37,15 +39,15 @@ const NavigationAuth = ({ authUser }) => (
     </div>
     <style jsx>
       {`
-      a{
-        color:black;
-        font-family:'Quicksand', sans-serif;
-        text-decoration:none;
-      }
-      .logo-link{
-        color:black !important;
-        text-decoration:none !important;
-      }
+        a {
+          color: black;
+          font-family: "Quicksand", sans-serif;
+          text-decoration: none;
+        }
+        .logo-link {
+          color: black !important;
+          text-decoration: none !important;
+        }
         img {
         }
         ul {
@@ -61,7 +63,7 @@ const NavigationAuth = ({ authUser }) => (
         .logo-container > .logo-link {
           display: flex;
           align-items: baseline;
-          margin-top:10px;
+          margin-top: 10px;
         }
         h1 {
           font-family: "Quicksand", sans-serif;
