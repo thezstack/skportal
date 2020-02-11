@@ -80,14 +80,56 @@ const NavigationAuth = ({ authUser }) => (
 );
 
 const NavigationNonAuth = () => (
-  <ul>
-    <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-    </li>
-  </ul>
+  <div>
+    <div className="nav-container">
+      <div className="logo-container">
+      <Link to={ROUTES.LANDING} className="logo-link">
+          <img src={logo} alt="School Kits Logo" width="50px" />
+          <h1>School Kits Portal</h1>
+        </Link>
+        <ul>
+          <li>
+            <Link to={ROUTES.LANDING}>Landing</Link>
+          </li>
+          <li>
+            <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <style jsx>
+      {`
+      div{
+        background-color: #ccfbfe;
+
+      }
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 0px 30px;
+        
+      }
+      a{
+        color:black;
+        font-family:'Quicksand', sans-serif;
+        text-decoration:none;
+      }
+      .logo-link{
+        color:black !important;
+        text-decoration:none !important;
+      }
+      .logo-container > .logo-link {
+        display: flex;
+        align-items: baseline;
+        margin-top:10px;
+
+     
+      
+      `}
+    </style>
+
+  </div>
+  
 );
 
 const mapStateToProps = state => ({
