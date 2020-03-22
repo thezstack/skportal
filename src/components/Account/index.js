@@ -11,27 +11,19 @@ const SIGN_IN_METHODS = [
   {
     id: 'password',
     provider: null,
-  },
-  {
-    id: 'google.com',
-    provider: 'googleProvider',
-  },
-  {
-    id: 'facebook.com',
-    provider: 'facebookProvider',
-  },
-  {
-    id: 'twitter.com',
-    provider: 'twitterProvider',
-  },
+  }
 ];
 
+
+
 const AccountPage = ({ authUser }) => (
+
   <div>
     <h1>Account: {authUser.email}</h1>
+<h2>School Name: {authUser.schoolName}</h2>
     <PasswordForgetForm />
     <PasswordChangeForm />
-    <LoginManagement authUser={authUser} />
+
   </div>
 );
 
@@ -58,12 +50,6 @@ class LoginManagementBase extends Component {
       .catch(error => this.setState({ error }));
   };
 
-  onSocialLoginLink = provider => {
-    this.props.firebase.auth.currentUser
-      .linkWithPopup(this.props.firebase[provider])
-      .then(this.fetchSignInMethods)
-      .catch(error => this.setState({ error }));
-  };
 
   onDefaultLoginLink = password => {
     const credential = this.props.firebase.emailAuthProvider.credential(
@@ -99,23 +85,13 @@ class LoginManagementBase extends Component {
 
             return (
               <li key={signInMethod.id}>
-                {signInMethod.id === 'password' ? (
-                  <DefaultLoginToggle
+                    <DefaultLoginToggle
                     onlyOneLeft={onlyOneLeft}
                     isEnabled={isEnabled}
                     signInMethod={signInMethod}
                     onLink={this.onDefaultLoginLink}
                     onUnlink={this.onUnlink}
                   />
-                ) : (
-                  <SocialLoginToggle
-                    onlyOneLeft={onlyOneLeft}
-                    isEnabled={isEnabled}
-                    signInMethod={signInMethod}
-                    onLink={this.onSocialLoginLink}
-                    onUnlink={this.onUnlink}
-                  />
-                )}
               </li>
             );
           })}
@@ -126,29 +102,6 @@ class LoginManagementBase extends Component {
   }
 }
 
-const SocialLoginToggle = ({
-  onlyOneLeft,
-  isEnabled,
-  signInMethod,
-  onLink,
-  onUnlink,
-}) =>
-  isEnabled ? (
-    <button
-      type="button"
-      onClick={() => onUnlink(signInMethod.id)}
-      disabled={onlyOneLeft}
-    >
-      Deactivate {signInMethod.id}
-    </button>
-  ) : (
-    <button
-      type="button"
-      onClick={() => onLink(signInMethod.provider)}
-    >
-      Link {signInMethod.id}
-    </button>
-  );
 
 class DefaultLoginToggle extends Component {
   constructor(props) {

@@ -12,14 +12,14 @@ class SignOut extends Component {
   render() {
     return (
       <div>
-        <button type="button" onClick={this.onClick}>
+        <button className="signout-button "type="button" onClick={this.onClick}>
         
           Sign Out
         </button>
 
         <style jsx>
           {`
-            button {
+            .signout-button {
                 padding:10px 5px;
                 background-color:#B28B84;
                 border:1px solid black;
