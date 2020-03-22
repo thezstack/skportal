@@ -16,7 +16,7 @@ const NavigationAuth = ({ authUser }) => (
       <div className="logo-container">
         <Link to={ROUTES.HOME} className="logo-link">
           <img src={logo} alt="School Kits Logo" width="50px" />
-          <h1>School Kits Portal</h1>
+          <h1 className="school-kits-text">School Kits Portal</h1>
         </Link>
       </div>
 
@@ -65,7 +65,7 @@ const NavigationAuth = ({ authUser }) => (
           align-items: baseline;
           margin-top: 10px;
         }
-        h1 {
+        .school-kits-text {
           font-family: "Quicksand", sans-serif;
           font-size: 24px;
           margin-left: 10px;
@@ -87,7 +87,7 @@ const NavigationNonAuth = () => (
       <div className="logo-container">
         <Link to={ROUTES.LANDING} className="logo-link">
           <img src={logo} alt="School Kits Logo" width="50px" />
-          <h1>School Kits Portal</h1>
+          <h1 className="school-kits-text">School Kits Portal</h1>
         </Link>
       </div>
     </div>
@@ -119,7 +119,7 @@ const NavigationNonAuth = () => (
           align-items: baseline;
           margin-top: 10px;
         }
-        h1 {
+        .school-kits-text {
           font-family: "Quicksand", sans-serif;
           font-size: 24px;
           margin-left: 10px;

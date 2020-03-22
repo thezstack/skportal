@@ -9,16 +9,17 @@ import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
+import { connect } from "react-redux";
+
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 
-const App = () => (
-  <Router>
-    <div>
+const App = ({authUser}) => (
+  <Router >
+    <div className={authUser ? "app-container": "blue app-container" } >
       <Navigation />
 
-      <hr />
 
       <Route exact path={ROUTES.LANDING} component={SignInPage} />
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
@@ -30,8 +31,25 @@ const App = () => (
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
+
+      <style jsx>
+        {`
+        .blue{
+          background-color: #CCFBFE;
+        }
+        .app-container{
+          height:100%;
+        }
+        
+        `}
+      </style>
     </div>
+
   </Router>
 );
 
-export default withAuthentication(App);
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser
+});
+
+export default withAuthentication(connect(mapStateToProps)(App));
