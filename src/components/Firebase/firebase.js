@@ -25,6 +25,7 @@ class Firebase {
 
     this.auth = app.auth();
     this.db = app.database();
+    
 
     /* Social Sign In Method Provider */
 
@@ -94,6 +95,7 @@ class Firebase {
   user = uid => this.db.ref(`users/${uid}`);
 
   users = () => this.db.ref('users');
+
 
   // *** Message API ***
 

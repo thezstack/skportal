@@ -14,3 +14,58 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.user-session-form-container{
+  display:flex;
+  flex-flow:column;
+
+}
+.user-session-form-background{
+
+  width: 100%;
+  padding: 30px;
+  background: white;
+  box-sizing: border-box;
+  border:1px solid black;
+}
+.user-session-form-container > input{
+  margin-bottom:30px;
+  padding:15px;
+  border: 1px solid black;
+  font-size: 14px;
+  background:white;
+  font-family:'Quicksand', sans-serif;
+}
+.user-session-button{
+  background-color:#936142;
+  padding:10px;
+  font-size:16px;
+  font-family:'Quicksand', sans-serif;
+  color:white;
+  font-weight:bold;
+  border:1px solid black;
+  cursor:pointer;
+  margin-top:50px;
+}
+
+.user-session-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+h1, h2, h3, h4{
+  font-family: 'Quicksand', sans-serif;
+}
+
+.user-session-dropdown{
+  margin-bottom: 30px;
+    border: 1px solid black;
+    font-size: 14px;
+    background: white;
+    font-family: 'Quicksand', sans-serif;
+    height: 30px;
+}
+
+.user-session-custom-width{
+  width: 500px;
+}

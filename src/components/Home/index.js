@@ -26,6 +26,8 @@ class Home extends Component {
         loading: false
       });
     });
+
+
   }
 
   componentWillUnmount() {
@@ -33,6 +35,7 @@ class Home extends Component {
   }
 
   render() {
+   
     const { inventory, loading } = this.state;
     return (
       <div>

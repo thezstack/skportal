@@ -9,6 +9,7 @@ class SignOut extends Component {
     this.props.history.push(ROUTES.LANDING);
   };
 
+
   render() {
     return (
       <div>

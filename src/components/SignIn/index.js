@@ -8,10 +8,11 @@ import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 
 const SignInPage = () => (
-  <div className="sign-in-container">
+  <div className="user-session-container ">
     <div>
       <h1 className="welcome-text">Welcome to School Kits Portal</h1>
       <SignUpLink />
+      <h2 className="login-h2">Login</h2>
       <SignInForm />
       <PasswordForgetLink />
     </div>
@@ -21,15 +22,17 @@ const SignInPage = () => (
         text-decoration: underline;
       }
 
-      .sign-in-container {
-        display: flex;
-        justify-content: center;
-      }
-
       .welcome-text {
         font-family: "Quicksand", sans-serif;
         font-weight: 500;
       }
+      .forgot-password-text{
+        color:#936142;
+        font-weight:bold;
+        cursor:pointer;
+        text-decoration:underline;
+      }
+
     `}</style>
   </div>
 );
@@ -55,6 +58,7 @@ class SignInFormBase extends Component {
       .then(() => {
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.HOME);
+    
       })
       .catch(error => {
         this.setState({ error });
@@ -73,8 +77,8 @@ class SignInFormBase extends Component {
     const isInvalid = password === "" || email === "";
 
     return (
-      <div className="form-background">
-        <form className="form-container" onSubmit={this.onSubmit}>
+      <div className="user-session-form-background">
+        <form className="user-session-form-container" onSubmit={this.onSubmit}>
           <input
             name="email"
             value={email}
@@ -89,53 +93,13 @@ class SignInFormBase extends Component {
             type="password"
             placeholder="Password"
           />
-          <button  className="sign-in-out-button" disabled={isInvalid} type="submit">
+          <button  className="user-session-button" disabled={isInvalid} type="submit">
            Login
           </button>
 
           {error && <p>{error.message}</p>}
         </form>
-        <style jsx>
-        {
-          `
-          .form-container{
-            display:flex;
-            flex-flow:column;
 
-          }
-          .form-background{
-      
-            width: 100%;
-            padding: 30px;
-            background: white;
-            box-sizing: border-box;
-            border:1px solid black;
-          }
-          .form-container > input{
-            margin-bottom:30px;
-            padding:15px;
-            border: 1px solid black;
-            font-size: 14px;
-            background:white;
-            font-family:'Quicksand', sans-serif;
-          }
-          .sign-in-out-button{
-            background-color:#936142;
-            padding:10px;
-            font-size:16px;
-            font-family:'Quicksand', sans-serif;
-            color:white;
-            font-weight:bold;
-            border:1px solid black;
-            cursor:pointer;
-            margin-top:50px;
-          }
-
-          
-
-          `
-        }
-        </style>
       </div>
     );
   }

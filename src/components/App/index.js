@@ -10,12 +10,14 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import { connect } from "react-redux";
+import { withFirebase } from "../Firebase";
 
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 
 const App = ({authUser}) => (
+
   <Router >
     <div className={authUser ? "app-container": "blue app-container" } >
       <Navigation />
@@ -51,5 +53,6 @@ const App = ({authUser}) => (
 const mapStateToProps = state => ({
   authUser: state.sessionState.authUser
 });
+
 
 export default withAuthentication(connect(mapStateToProps)(App));
