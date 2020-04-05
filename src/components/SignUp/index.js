@@ -24,7 +24,8 @@ const INITIAL_STATE = {
   numberOfStudents: "",
   isAdmin: false,
   error: null,
-  schoolNameError: null
+  schoolNameError: null,
+  isNewUser:true
 };
 
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
@@ -48,7 +49,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne, isAdmin, schoolName } = this.state;
+    const { username, email, passwordOne, isAdmin, schoolName, isNewUser} = this.state;
     console.log(schoolName);
     const roles = {};
 
@@ -64,7 +65,8 @@ class SignUpFormBase extends Component {
             username,
             email,
             roles,
-            schoolName
+            schoolName,
+            isNewUser
           });
         })
         .then(() => {
