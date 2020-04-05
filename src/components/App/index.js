@@ -8,6 +8,7 @@ import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
+import Onboarding from '../Onboarding'
 import { connect } from "react-redux";
 import { withFirebase } from "../Firebase";
 
@@ -32,6 +33,8 @@ const App = ({authUser}) => (
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
+      <Route path={ROUTES.ONBOARDING} component={Onboarding} />
+
 
       <style jsx>
         {`

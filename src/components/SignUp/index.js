@@ -25,7 +25,15 @@ const INITIAL_STATE = {
   isAdmin: false,
   error: null,
   schoolNameError: null,
-  isNewUser:true
+  isNewUser:true,
+  listSetup:{
+    0: { items: [], numberofStudents: 0, inChargeOf: false , grade:"Kindergarten"},
+    1: { items: [], numberofStudents: 0, inChargeOf: false , grade:"First Grade"},
+    2: { items: [], numberofStudents: 0, inChargeOf: false , grade:"Second Grade"},
+    3: { items: [], numberofStudents: 0, inChargeOf: false ,grade:"Third Grade"},
+    4: { items: [], numberofStudents: 0, inChargeOf: false , grade:"Fourth Grade"},
+    5: { items: [], numberofStudents: 0, inChargeOf: false , grade:"Fifth Grade"},
+  }
 };
 
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
@@ -38,7 +46,6 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
   on your personal account page.
 `;
 
-const selectSchoolValidation = "Please select your school";
 
 class SignUpFormBase extends Component {
   constructor(props) {
@@ -49,8 +56,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne, isAdmin, schoolName, isNewUser} = this.state;
-    console.log(schoolName);
+    const { username, email, passwordOne, isAdmin, schoolName, isNewUser, listSetup} = this.state;
     const roles = {};
 
     if (isAdmin) {
@@ -66,7 +72,8 @@ class SignUpFormBase extends Component {
             email,
             roles,
             schoolName,
-            isNewUser
+            isNewUser,
+            listSetup
           });
         })
         .then(() => {

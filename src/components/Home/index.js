@@ -5,6 +5,7 @@ import "react-table/react-table.css";
 import { Link } from "react-router-dom";
 import { compose } from "recompose";
 import { connect } from "react-redux";
+import * as ROUTES from '../../constants/routes';
 
 import { withEmailVerification } from "../Session";
 
@@ -54,7 +55,7 @@ class Home extends Component {
               This portal will help you create the school list for your
               classroom. Please click the button below to begin.
             </p>
-            <button className="start-button">Start</button>
+           <Link to={ROUTES.ONBOARDING}><button className="start-button">Start</button></Link> 
           </div>
           <style jsx>
             {`
